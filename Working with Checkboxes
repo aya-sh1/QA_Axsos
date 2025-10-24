@@ -1,0 +1,96 @@
+package test.Axsos;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+public class HelloSelenuim extends TestBase {
+
+	@Test
+	public void testCheck() {
+		WebElement Red = driver.findElement(By.xpath("//input[@value='red']"));
+		WebElement Yellow = driver.findElement(By.xpath("//input[@value='yellow']"));
+		WebElement Blue = driver.findElement(By.xpath("//input[@value='blue']"));
+		WebElement Orange = driver.findElement(By.xpath("//input[@value='orange']"));
+		WebElement Green = driver.findElement(By.xpath("//input[@value='green']"));
+		WebElement Purple = driver.findElement(By.xpath("//input[@value='purple']"));
+
+		Red.click();
+		Yellow.click();
+		Blue.click();
+		Orange.click();
+		Green.click();
+		Purple.click();
+
+		boolean actualResultRed = Red.isSelected();
+		boolean actualResultYellow = Yellow.isSelected();
+		boolean actualResultBlue = Blue.isSelected();
+		boolean actualResultOrange = Orange.isSelected();
+		boolean actualResultGreen = Green.isSelected();
+		boolean actualResultPurple = Purple.isSelected();
+
+		Assert.assertTrue(actualResultRed, "Red box is Not checked!");
+		System.out.println("Red box is checked!");
+		Assert.assertTrue(actualResultYellow, "Yellow box is Not checked!");
+		System.out.println("Yellow box is checked!");
+		Assert.assertTrue(actualResultBlue, "Blue box is Not checked!");
+		System.out.println("Blue box is checked!");
+		Assert.assertTrue(actualResultOrange, "Orange box is Not checked!");
+		System.out.println("Orange box is checked!");
+		Assert.assertTrue(actualResultGreen, "Green box is Not checked!");
+		System.out.println("Green box is checked!");
+		Assert.assertTrue(actualResultPurple, "Purple box is Not checked!");
+		System.out.println("Purple box is checked!");
+
+		Red.click();
+		Yellow.click();
+		Blue.click();
+		Orange.click();
+		Green.click();
+		Purple.click();
+
+		Assert.assertTrue(actualResultRed, "Red box is checked!");
+		System.out.println("\nRed box is Not checked!");
+		Assert.assertTrue(actualResultYellow, "Yellow box is checked!");
+		System.out.println("Yellow box is Not checked!");
+		Assert.assertTrue(actualResultBlue, "Blue box is checked!");
+		System.out.println("Blue box is Not checked!");
+		Assert.assertTrue(actualResultOrange, "Orange box is checked!");
+		System.out.println("Orange box is Not checked!");
+		Assert.assertTrue(actualResultGreen, "Green box is checked!");
+		System.out.println("Green box is Not checked!");
+		Assert.assertTrue(actualResultPurple, "Purple box is checked!");
+		System.out.println("Purple box is Not checked!");
+
+	}
+
+}
+Class2:
+package test.Axsos;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class TestBase {
+
+	protected WebDriver driver;
+	private static String baseUrl = "https://www.ironspider.ca/forms/checkradio.htm";
+
+	@BeforeTest
+	public void setup() {
+		WebDriverManager.chromedriver().setup();
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get(baseUrl);
+	}
+	@AfterTest
+	public void tearDown() {
+		if (driver != null) {
+			driver.quit();
+		}
+	}
+}
