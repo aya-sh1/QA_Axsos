@@ -1,0 +1,20 @@
+import java.util.Scanner;
+
+public class equal {
+
+	public static void main(String[] args) {
+		Integer number1, number2;
+		Scanner input= new Scanner (System.in);
+		System.out.println("Enter First Number");
+		number1=input.nextInt();
+		System.out.println("Enter Second Number");
+		number2=input.nextInt();
+		if(number1.equals(number2)) {
+			System.out.println("true");
+		}
+			else{
+			System.out.println("false");
+		}
+		
+	}
+}
