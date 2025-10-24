@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class equal {
+
+	public static void main(String[] args) {
+		
+		int number1;
+		int number2=1;
+		int factorial=1;
+		
+		Scanner input=new Scanner(System.in);
+		System.out.println("Enter a Number");
+		number1=input.nextInt();
+		
+		while(number2<=number1) {
+			factorial=factorial*number2;
+			number2++;
+		}
+		System.out.println("Factorial is: "+factorial);
+	}
+}
