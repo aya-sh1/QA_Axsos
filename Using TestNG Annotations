@@ -1,0 +1,31 @@
+package test;
+
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+		
+public class tes1 {
+	 
+		@BeforeTest
+	    @BeforeClass
+	    public void beforeClass() {
+	        System.out.println("Open Chrome");
+	    }
+	    
+	    @Test
+	    public void testSuccessfulRegistration() {
+	        System.out.println("Successful Registration");
+	    }
+
+	    @Test
+	    public void testInvalidRegistration() {
+	        System.out.println("Unsuccessful Registration");
+	    }
+	    @AfterTest
+	    @AfterClass
+	    public void afterClass() {
+	        System.out.println("Close Chrome");
+	    }
+	}
