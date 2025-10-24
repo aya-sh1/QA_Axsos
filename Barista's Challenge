@@ -1,0 +1,150 @@
+package assigment2;
+
+
+public class TestOrders {
+
+	public static void main(String[] args) {
+		Item item1 = new Item("mocha",3.3);	
+		Item item2 = new Item("latte",1.2);	
+		Item item3 = new Item("drip coffee",2.1);	
+		Item item4 = new Item("cappuccino",4.1);	
+	
+		Order guest1=new Order();
+		Order guest2=new Order();
+		
+		Order order1=new Order("Cindhuri");
+		Order order2=new Order("Jimmy");
+		Order order3=new Order("Noah");
+		
+		guest1.addItem(item3);
+		guest1.addItem(item2);
+		
+		guest2.addItem(item2);
+		guest2.addItem(item4);
+		
+		order1.addItem(item3);
+		order1.addItem(item4);
+		
+		order2.addItem(item1);
+		order2.addItem(item1);
+ 
+		order3.addItem(item4);
+		order3.addItem(item2);
+
+		guest1.setReady(true);
+		order2.setReady(true);
+		
+		System.out.println(order1.getOrderTotal());
+		
+		guest1.display();
+		System.out.println(guest1.getStatusMessage()); 
+       guest2.display();
+       System.out.println(guest2.getStatusMessage());
+       order1.display();
+       System.out.println(order1.getStatusMessage());
+       order2.display();
+       System.out.println(order2.getStatusMessage());
+       order3.display();
+       System.out.println(order3.getStatusMessage());
+		 
+	}	
+}		
+ 
+
+  package assigment2;
+
+public class Item {
+	private String name;
+	private double price;
+
+	public Item (String name,double price) {//Constructor
+		this.name=name;
+		this.price=price;
+	}
+	void setName(String item){	
+		this.name= item;
+	}
+	public String getName() {
+		return this.name;
+	}
+	void setPrice(double price) {
+		this.price= price;
+	}
+	public double getPrice() {
+		return this.price;
+	
+	}
+	
+}
+
+
+
+ package assigment2;
+
+import java.util.ArrayList;
+
+public class Order {
+	private String name;
+	private boolean ready;
+	private ArrayList<Item>items;
+
+	
+	public Order() { //Constructor
+		this.name="Guest";
+		this.ready=false;
+		this.items=new ArrayList<Item>();
+		}
+	public Order(String name) {// overload
+		this.name=name;
+		this.ready=false;
+		this.items=new ArrayList<Item>();
+		}// setters
+	public void setName(String item){
+		name= item;
+		}
+	public void setitems(ArrayList<Item> items) {
+		this.items= items;
+		}
+	
+	public void setReady(boolean ready) {
+		this.ready=ready;
+		}//getters
+	public  String getName() {
+		return this.name;	
+		}
+	public ArrayList<Item> getitems () {
+		return items;
+		}
+	public boolean getReady() {
+		return ready;
+		}
+	
+	 public void addItem(Item item){
+		this.items.add(item);
+		}
+		
+	public String getStatusMessage() {
+		if(this.ready) {
+				return "Your order is ready.";
+		}else {
+			return	"Thank you for waiting Your order will be ready soon.";
+			}
+		}
+	public  double getOrderTotal(){
+		double total=0.0;
+		for( Item item:this.items) {
+			total+=item.getPrice();
+		
+		}return total;
+		
+	}
+	public void display(){ 
+		System.out.println("\nCustomer Name: "+this.getName());
+		for(Item item:this.items) {
+		System.out.println(item.getName()+" - "+item.getPrice());
+		}
+		System.out.println("Total "+getOrderTotal());
+		}
+	}
+
+	
