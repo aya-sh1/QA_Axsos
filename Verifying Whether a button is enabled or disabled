@@ -1,0 +1,36 @@
+package test.Axsos;
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class HelloSelenuim {
+    public static void main(String[] args) throws InterruptedException {
+
+    	WebDriverManager.chromedriver().setup();
+    	WebDriver driver=new ChromeDriver();
+    	
+
+	   driver.get("https://the-internet.herokuapp.com/dynamic_controls");
+	   WebElement textField= driver.findElement(By.xpath("//input[@type='text']"));
+	   WebElement test= driver.findElement(By.xpath("//button[@autocomplete='off' and text()='Enable']"));
+	   
+	   test.click();
+	   Thread.sleep(5000);
+	   textField.sendKeys("Test");
+	    System.out.println(textField.isEnabled());
+	 
+	   WebElement test1= driver.findElement(By.xpath("//button[@autocomplete='off' and text()='Disable']"));
+	   test1.click();
+	   Thread.sleep(5000);
+	   System.out.println(textField.isEnabled());
+	   
+	  
+	  	
+
+
+    }
+}
