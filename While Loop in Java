@@ -1,0 +1,28 @@
+package practice;
+
+import java.util.Scanner;
+
+public class Greeting {
+
+	public static void main(String[] args) {
+
+		System.out.println(revers());
+	}
+
+	public static int revers() {
+		int number;
+		int reverse = 0;
+		int rem;
+
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter a number ");
+		number = input.nextInt();
+		while (number > 0) {
+			rem = number % 10;
+			reverse = (reverse * 10) + rem;
+			number = number / 10;
+		}
+		return reverse;
+	}
+
+}
