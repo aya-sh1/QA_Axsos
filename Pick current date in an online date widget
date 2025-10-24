@@ -1,0 +1,29 @@
+package test.Axsos;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class HelloSelenuim {
+	public static void main(String[] args) throws InterruptedException {
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://jqueryui.com/datepicker/");
+
+		WebElement frame = driver.findElement(By.className("demo-frame"));
+
+		driver.switchTo().frame(frame);
+		WebElement element = driver.findElement(By.xpath("//input[@type='text']"));
+
+		Date date = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		element.sendKeys(sdf.format(date),Keys.ENTER);
+
+	}
+}
