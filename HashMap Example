@@ -1,0 +1,18 @@
+import java.util.HashMap;
+
+public class equal {
+	public static void main(String[] args) {
+	HashMap<Integer,String> test=new HashMap<>();
+	test.put(1, "Grapes");
+	test.put(2, "Apple");
+	test.put(3, "Bananna");
+	test.put(4, "watermelon");
+	test.put(4, "pineapple");
+	
+	System.out.println("Iterating Hashmap...");
+	for(Integer key:test.keySet()) {
+		System.out.println(key+" "+test.get(key));
+	}
+  }
+}
+
